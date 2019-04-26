@@ -1,0 +1,6 @@
+alert("There will be an error")[1, 2].forEach(alert)
+// These syntax shows error that can not interpret the property of the secont statement [1, 2].forEach which is not a defined.
+
+alert('All fine now');[1, 2].forEach(alert)
+// here is a successful syntax that output "All fine now" 1, 2 respectivly.
+
