@@ -1,0 +1,19 @@
+function Recursion(value) {
+    this.value = value;
+    this.left = null; 
+    this.right = null;
+}
+
+Recursion.prototype.insert = function(value) {
+    if (value <= this.value) {
+        if (this.left) this.left = new Recursion(value);
+        else this.left.insert(value);
+    }
+    else if (value > this.value) {
+        if (!this.right) this.right = new Recursion(value);
+        else this.right.insert(value);
+    }
+};
+
+
+let bst = new Recursion(50)
