@@ -1,19 +1,35 @@
 function Recursion(value) {
-    this.value = value;
-    this.left = null; 
-    this.right = null;
+  this.value = value;
+  this.left = null;
+  this.right = null;
 }
 
 Recursion.prototype.insert = function(value) {
-    if (value <= this.value) {
-        if (this.left) this.left = new Recursion(value);
-        else this.left.insert(value);
-    }
-    else if (value > this.value) {
-        if (!this.right) this.right = new Recursion(value);
-        else this.right.insert(value);
-    }
+  if (value <= this.value) {
+    if (this.left) this.left = new Recursion(value);
+    else this.left.insert(value);
+  } else if (value > this.value) {
+    if (!this.right) this.right = new Recursion(value);
+    else this.right.insert(value);
+  }
 };
 
+Recursion.prototype.depthFirstTraversal = function(iterationFunc) {
+  if (this.left) this.left.depthFirstTraversal(iterationFunc);
+  iterationFunc(this.value);
+  if (this.right) this.right.depthFirstTraversal(iterationFunc);
+};
 
-let bst = new Recursion(50)
+let recursion = new Recursion(50);
+
+recursion.insert(30);
+recursion.insert(70);
+recursion.insert(101);
+
+recursion.depthFirstTraversal(log);
+
+function log(value) {
+  console.log(value);
+}
+
+console.log(recursion.contains(50));
